@@ -1,0 +1,19 @@
+import pandas as pd
+
+# قراءة بيانات الأعضاء من ملف Excel
+members_df = pd.read_excel("members.xlsx")
+
+# تسجيل الدخول وعرض معلومات العضو
+def login(phone, password):
+    member_info = members_df[(members_df['رقم الهاتف'] == phone) & (members_df['كلمة السر'] == password)]
+    if not member_info.empty:
+        print("تم تسجيل الدخول بنجاح!")
+        print("معلومات العضو:")
+        print(member_info)
+    else:
+        print("فشل تسجيل الدخول. الرجاء التأكد من رقم الهاتف وكلمة المرور.")
+
+# الوصول إلى وظيفة تسجيل الدخول
+phone = input("الرجاء إدخال رقم الهاتف: ")
+password = input("الرجاء إدخال كلمة المرور: ")
+login(phone, password)

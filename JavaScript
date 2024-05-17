@@ -1,0 +1,25 @@
+// قراءة بيانات الأعضاء من ملف Excel
+const members = [
+    [774439033, '1234', 1, 'محمد علي احمد المقولي', 16819, 16406, 16426, 18012],
+    [771422500, '1234', 2, 'حمود احمد صالح المقولي', 16807, 16403, 16431, 16442, 18023, 18035, 18032],
+    // يمكنك إضافة المزيد من البيانات هنا
+];
+
+// تسجيل الدخول وعرض معلومات العضو
+function login(phone, password) {
+    const member = members.find(member => member[0] === phone && member[1] === password);
+    if (member) {
+        console.log("تم تسجيل الدخول بنجاح!");
+        console.log("معلومات العضو:");
+        console.log("رقم العضوية:", member[2]);
+        console.log("اسم العضو / العضوة:", member[3]);
+        console.log("أرقام السند:", member.slice(4));
+    } else {
+        console.log("فشل تسجيل الدخول. الرجاء التأكد من رقم الهاتف وكلمة المرور.");
+    }
+}
+
+// استخدام تسجيل الدخول
+const phone = prompt("الرجاء إدخال رقم الهاتف:");
+const password = prompt("الرجاء إدخال كلمة المرور:");
+login(parseInt(phone), password);

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        form {
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>تسجيل الدخول</h1>
+    <form id="loginForm">
+        <input type="tel" id="phone" placeholder="رقم الهاتف">
+        <br>
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <br>
+        <button type="submit">تسجيل الدخول</button>
+    </form>
+
+    <script>
+        const members = [
+            [774439033, '1234', 1, 'محمد علي احمد المقولي', 16819, 16406, 16426, 18012],
+            [771422500, '1234', 2, 'حمود احمد صالح المقولي', 16807, 16403, 16431, 16442, 18023, 18035, 18032],
+            // يمكنك إضافة المزيد من البيانات هنا
+        ];
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const phone = document.getElementById("phone").value;
+            const password = document.getElementById("password").value;
+            const member = members.find(member => member[0] == phone && member[1] == password);
+            if (member) {
+                alert("تم تسجيل الدخول بنجاح!\nمعلومات العضو:\nرقم العضوية: " + member[2] + "\nاسم العضو / العضوة: " + member[3] + "\nأرقام السند: " + member.slice(4).join(", "));
+            } else {
+                alert("فشل تسجيل الدخول. الرجاء التأكد من رقم الهاتف وكلمة المرور.");
+            }
+        });
+    </script>
+</body>
+</html>
